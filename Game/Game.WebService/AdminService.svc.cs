@@ -1,0 +1,212 @@
+﻿using System.Linq;
+using System.ServiceModel;
+using GameLogic;
+using Game.WebService.Model;
+using GameLogic.UserManagement;
+
+namespace Game.WebService
+{
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
+    public class AdminService : ServiceBase, IAdminService
+    {
+        public InitLoginResp InitLogin(InitLoginReq req)
+        {
+            return HandleServiceCall(req, new InitLoginResp(), InitLoginImpl, new SessionAuthOptions { IsLoginFlow = true });
+        }
+
+        private void InitLoginImpl(InitLoginReq req, InitLoginResp resp)
+        {
+            SessionChallenge challenge = Server.SessionManager.CreateChallenge(req.Auth.GetClientCode());
+            resp.Challenge = challenge.Challenge;
+        }
+
+        public CompleteLoginResp CompleteLogin(CompleteLoginReq req)
+        {
+            return HandleServiceCall(req, new CompleteLoginResp(), CompleteLoginImpl, new SessionAuthOptions { IsLoginFlow = true });
+        }
+
+        private void CompleteLoginImpl(CompleteLoginReq req, CompleteLoginResp resp)
+        {
+            ClientSession session = Server.SessionManager.CreateSession(req.Auth.GetClientCode(), req.ChallengeResponse);
+            resp.SessionId = session.SessionId;
+        }
+
+        public ListGamesResp ListGames(ListGamesReq req)
+        {
+            return HandleServiceCall(req, new ListGamesResp(), ListGamesImpl);
+        }
+
+        private void ListGamesImpl(ListGamesReq req, ListGamesResp resp)
+        {
+            resp.Games = Server.GameManager
+                .ListGames(Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGamesList())
+                .Select(g => new EnGameInfo(g)).ToList();
+        }
+
+        public CreateGameResp CreateGame(CreateGameReq req)
+        {
+            return HandleServiceCall(req, new CreateGameResp(), CreateGameImpl);
+        }
+
+        private void CreateGameImpl(CreateGameReq req, CreateGameResp resp)
+        {
+            Team owner = Server.TeamRegistry.GetTeam(req.Auth.TeamName);
+            resp.GameInfo = new EnGameInfo(Server.GameManager.CreateGame(owner, new PermissionCreateGameLimited(), new PermissionCreateGame()));
+        }
+
+        public GetGameDetailsResp GetGameDetails(GetGameDetailsReq req)
+        {
+            return HandleServiceCall(req, new GetGameDetailsResp(), GetGameDetailsImpl);
+        }
+
+        private void GetGameDetailsImpl(GetGameDetailsReq req, GetGameDetailsResp resp)
+        {
+            resp.GameDetails = new EnGameDetails(Server.GameManager.GetGameDetails(req.GameId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameDetails()));
+        }
+
+        public ListPlayersResp ListPlayers(ListPlayersReq req)
+        {
+            return HandleServiceCall(req, new ListPlayersResp(), ListPlayersImpl);
+        }
+
+        private void ListPlayersImpl(ListPlayersReq req, ListPlayersResp resp)
+        {
+            resp.Players = Server.GameManager
+                .ListPlayers(Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionPlayersList())
+                .Select(p => new EnPlayerInfo(p))
+                .ToList();
+        }
+
+        public AddGamePlayerResp AddGamePlayer(AddGamePlayerReq req)
+        {
+            return HandleServiceCall(req, new AddGamePlayerResp(), AddGamePlayerImpl);
+        }
+
+        private void AddGamePlayerImpl(AddGamePlayerReq req, AddGamePlayerResp resp)
+        {
+            Server.GameManager.AddGamePlayer(req.GameId, req.PlayerId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameAccess(), new PermissionPlayerAccessByTeam());
+        }
+
+        public RemoveGamePlayerResp RemoveGamePlayer(RemoveGamePlayerReq req)
+        {
+            return HandleServiceCall(req, new RemoveGamePlayerResp(), RemoveGamePlayerImpl);
+        }
+
+        private void RemoveGamePlayerImpl(RemoveGamePlayerReq req, RemoveGamePlayerResp resp)
+        {
+            Server.GameManager.RemoveGamePlayer(req.GameId, req.PlayerId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameAccess());
+        }
+
+        public SetGameMapResp SetGameMap(SetGameMapReq req)
+        {
+            return HandleServiceCall(req, new SetGameMapResp(), SetGameMapImpl);
+        }
+
+        private void SetGameMapImpl(SetGameMapReq req, SetGameMapResp resp)
+        {
+            Server.GameManager.SetGameMap(req.GameId, req.MapData.ToMapData(), Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameAccess());
+        }
+
+        public StartGameResp StartGame(StartGameReq req)
+        {
+            return HandleServiceCall(req, new StartGameResp(), StartGameImpl);
+        }
+
+        private void StartGameImpl(StartGameReq req, StartGameResp resp)
+        {
+            Server.GameManager.StartGame(req.GameId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameAccess());
+        }
+
+        public PauseGameResp PauseGame(PauseGameReq req)
+        {
+            return HandleServiceCall(req, new PauseGameResp(), PauseGameImpl);
+        }
+
+        private void PauseGameImpl(PauseGameReq req, PauseGameResp resp)
+        {
+            Server.GameManager.PauseGame(req.GameId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameAccess());
+        }
+
+        public ResumeGameResp ResumeGame(ResumeGameReq req)
+        {
+            return HandleServiceCall(req, new ResumeGameResp(), ResumeGameImpl);
+        }
+
+        private void ResumeGameImpl(ResumeGameReq req, ResumeGameResp resp)
+        {
+            Server.GameManager.ResumeGame(req.GameId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameAccess());
+        }
+
+        public CreateObserverResp CreateObserver(CreateObserverReq req)
+        {
+            return HandleServiceCall(req, new CreateObserverResp(), CreateObserverImpl);
+        }
+
+        private void CreateObserverImpl(CreateObserverReq req, CreateObserverResp resp)
+        {
+            ObserverInfo oi = Server.GameManager.CreateObserver(Server.TeamRegistry.GetTeam(req.Auth.TeamName), req.Auth.ClientName);
+            resp.ObserverId = oi.ObserverId;
+            resp.Role = oi.Team.Role;
+        }
+
+        public StartObservingResp StartObserving(StartObservingReq req)
+        {
+            return HandleServiceCall(req, new StartObservingResp(), StartObservingImpl);
+        }
+
+        private void StartObservingImpl(StartObservingReq req, StartObservingResp resp)
+        {
+            Team team = Server.TeamRegistry.GetTeam(req.Auth.TeamName);
+            GameDetails gd = Server.GameManager.GetGameDetails(req.GameId, team, new PermissionGameDetails());
+            GameViewInfo gv = Server.GameManager.StartObserving(req.ObserverId, req.GameId, req.Auth.GetClientCode(), team, new PermissionObserving());
+            resp.GameDetails = new EnGameDetails(gd);
+            resp.Turn = gv.Turn;
+            resp.MapData = new EnMapData(gv.Map);
+            resp.PlayerStates = gv.PlayerStates.Select(ps => new EnPlayerState(ps)).ToArray();
+        }
+
+        public ObserveNextTurnResp ObserveNextTurn(ObserveNextTurnReq req)
+        {
+            return HandleServiceCall(req, new ObserveNextTurnResp(), ObserveNextTurnImpl);
+        }
+
+        private void ObserveNextTurnImpl(ObserveNextTurnReq req, ObserveNextTurnResp resp)
+        {
+            ObservedGameInfo gi = Server.GameManager.ObserveNextTurn(req.ObserverId, req.GameId, req.Auth.GetClientCode(), new PermissionObserving());
+            resp.GameInfo = new EnObsGameInfo(gi);
+            resp.TurnInfo = (gi.TurnInfo == null) ? null : new EnObsTurnInfo(gi.TurnInfo);
+        }
+
+
+        public DropPlayerResp DropPlayer(DropPlayerReq req)
+        {
+            return HandleServiceCall(req, new DropPlayerResp(), DropPlayerImpl);
+        }
+
+        private void DropPlayerImpl(DropPlayerReq req, DropPlayerResp resp)
+        {
+            Server.GameManager.DropPlayer(req.PlayerId, req.GameId, req.Auth.GetClientCode(), Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionPlayerAccessByTeam());
+        }
+
+        public DeleteGameResp DeleteGame(DeleteGameReq req)
+        {
+            return HandleServiceCall(req, new DeleteGameResp(), DeleteGameImpl);
+        }
+
+        private void DeleteGameImpl(DeleteGameReq req, DeleteGameResp resp)
+        {
+            Server.GameManager.DeleteGame(req.GameId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionGameAccess());
+        }
+
+        public GetLiveInfoResp GetLiveInfo(GetLiveInfoReq req)
+        {
+            return HandleServiceCall(req, new GetLiveInfoResp(), GetLiveInfoImpl);
+        }
+
+        private void GetLiveInfoImpl(GetLiveInfoReq req, GetLiveInfoResp resp)
+        {
+            GameLiveInfo gi = Server.GameManager.GetLiveInfo(req.GameId, Server.TeamRegistry.GetTeam(req.Auth.TeamName), new PermissionObserving());
+            resp.GameLiveInfo = new EnGameLiveInfo(gi);
+        }
+    }
+}

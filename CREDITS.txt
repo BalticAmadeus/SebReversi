@@ -1,0 +1,12 @@
+Seb Reversi (C) AB SEB bankas, 2016
+
+Solution is based on EnjoyTron source code by Baltic Amadeus.
+
+The following third party libraries were used in the solution:
+
+Microsoft CommonServiceLocator
+Microsoft Enterprise Library (Logging Application Block)
+Xceed Extended WPF Toolkit
+Prism
+Autofac
+Json.NET (Newtonsoft.Json)

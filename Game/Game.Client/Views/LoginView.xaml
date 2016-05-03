@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="Game.AdminClient.Views.LoginView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:controls="clr-namespace:Game.AdminClient.Controls"
+      xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800">
+
+    <UserControl.Background>
+        <ImageBrush Stretch="Fill" ImageSource="../Assets/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
+    </UserControl.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <!--<RowDefinition Height="100"></RowDefinition>-->
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="SEB" Width="709" Height="311">
+            <Canvas.Resources/>
+            -->
+        <!--Unknown tag: metadata-->
+        <!--Unknown tag: sodipodi:namedview-->
+        <!--
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="S" Fill="#000000" Data="m 0 38.644917 5.9723812 -4.951796 c 4.1789298 4.042682 7.1041698 4.622971 9.5418738 4.622971 2.785954 0 5.397775 -0.657655 5.746022 -2.417863 0.261191 -1.392706 -0.783537 -2.51459 -3.169015 -3.133568 -2.698893 -0.676999 -4.962468 -1.257287 -7.504646 -1.992323 -6.8778223 -2.01167 -8.8279782 -6.441202 -8.8279782 -10.425862 0 -5.493394 4.6142206 -11.1415381 13.0243082 -11.1415381 8.636448 0 13.685975 5.4933961 13.685975 5.4933961 l -5.641551 4.680991 c -2.66405 -2.553265 -6.094255 -3.03684 -7.992181 -3.03684 -1.915341 0 -3.917753 0.599632 -4.231172 2.127725 -0.296004 1.489417 0.94027 2.630647 3.081958 3.288302 2.420303 0.71569 4.649061 1.354013 8.044438 2.437222 5.06694 1.60546 8.549375 4.042684 8.549375 9.710171 0 7.775869 -6.216143 11.799207 -14.574 11.799207 C 7.3653589 45.705112 1.7063946 40.888701 0 38.644917"/>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="I" Fill="#000000" Data="m 32.78715 1.699861 1.950171 0 0 51.046085 -1.950171 0 0 -51.046085 z"/>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="E" Fill="#000000" Data="m 39.299312 44.679925 0 -34.9333898 25.160603 0 0 7.9886388 -16.332625 0 0 5.570776 11.561687 0 0 7.698503 -11.561687 0 0 5.628797 16.785343 0 0 8.046675 -25.613321 0"/>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="B" Fill="#000000" Data="m 74.733113 44.679925 0 -34.914045 18.474324 0 c 5.310718 0 9.611513 3.443052 9.611513 8.839733 0 4.274798 -2.36804 6.770041 -4.509743 7.717847 0 0 -0.1393 0.03868 -0.365658 0.05802 0.226358 0.01935 0.365658 0.05803 0.365658 0.05803 3.726203 1.315325 6.407693 4.313476 6.407693 8.839733 0 5.783546 -4.38788 9.400675 -9.785653 9.400675 l -20.198134 0 m 8.880207 -7.756524 8.619034 0 c 1.532277 0 2.768539 -1.373345 2.768539 -3.191589 0 -1.798899 -1.236262 -3.172244 -2.768539 -3.172244 l -8.619034 0 0 6.363833 m 0 -13.772184 7.034528 0 c 1.636735 0 2.942654 -1.431382 2.942654 -3.056202 0 -1.64415 -1.305919 -3.075531 -2.942654 -3.075531 l -7.034528 0 0 6.131733"/>
+        </Canvas>-->
+
+        <Grid Background="White" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Background="#58c50f">
+                <StackPanel VerticalAlignment="Center">
+                    <av:Canvas Width="98.030" Height="43.056" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                        <av:Canvas>
+                            <!-- Layer 1/logo -->
+                            <Path Fill="#ffffffff" Data="F1 M 33.525,43.056 L 31.075,43.056 L 31.075,0.000 L 33.525,0.000 L 33.525,43.054 L 33.525,43.056 Z M 66.988,43.056 L 64.540,43.056 L 64.540,0.000 L 66.988,0.000 L 66.988,43.054 L 66.988,43.056 Z M 87.088,29.482 C 88.528,29.380 89.613,28.130 89.511,26.690 C 89.419,25.392 88.386,24.359 87.088,24.267 L 79.517,24.267 L 79.517,29.484 L 87.088,29.482 Z M 79.517,13.182 L 79.517,18.203 L 85.706,18.203 C 87.093,18.231 88.239,17.129 88.267,15.743 C 88.294,14.356 87.193,13.210 85.806,13.182 C 85.773,13.181 85.739,13.181 85.706,13.182 L 79.517,13.182 Z M 71.733,35.839 L 71.733,7.232 L 87.939,7.232 C 92.597,7.232 96.373,10.055 96.373,14.483 C 96.489,17.202 94.917,19.712 92.421,20.796 C 92.317,20.823 92.212,20.842 92.105,20.852 C 92.211,20.856 92.317,20.871 92.421,20.895 C 95.695,21.973 98.030,24.430 98.030,28.131 C 98.030,32.877 94.190,35.838 89.451,35.838 L 71.733,35.838 L 71.733,35.839 Z M 59.401,7.232 L 59.401,13.769 L 45.701,13.769 L 45.701,18.323 L 55.408,18.323 L 55.408,24.632 L 45.701,24.632 L 45.701,29.240 L 59.793,29.240 L 59.793,35.835 L 38.283,35.835 L 38.283,7.232 L 59.406,7.232 L 59.401,7.232 Z M 24.778,11.532 C 21.466,8.693 17.233,7.159 12.871,7.218 C 5.547,7.218 1.541,11.650 1.541,15.966 C 1.541,19.098 3.228,22.586 9.211,24.161 C 11.417,24.741 13.396,25.179 15.738,25.723 C 17.811,26.205 18.727,27.086 18.490,28.194 C 18.197,29.564 15.923,30.087 13.490,30.087 C 11.371,30.087 8.834,29.637 5.190,26.448 L 0.000,30.342 C 1.476,32.111 6.418,35.900 13.673,35.900 C 20.928,35.900 26.341,32.730 26.341,26.612 C 26.341,22.173 23.325,20.260 18.913,18.997 C 15.946,18.147 14.020,17.644 11.907,17.069 C 10.051,16.569 8.973,15.661 9.234,14.495 C 9.503,13.295 11.242,12.816 12.911,12.816 C 15.437,12.785 17.895,13.631 19.867,15.209 L 24.778,11.532 Z"/>
+                        </av:Canvas>
+                    </av:Canvas>
+                    
+                    <Label Margin="0,15,0,0" HorizontalAlignment="Center" Style="{StaticResource LabelWhite}"  Content="_PROGRAMMING CONTEST"></Label>
+                </StackPanel>
+                
+            </Grid>
+
+            <Grid HorizontalAlignment="Center" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <StackPanel Margin="0,15,0,0">
+                        <Label HorizontalAlignment="Left" Target="{Binding ElementName=ServiceUrl}" Content="_Service url"  />
+                        <TextBox x:Name="ServiceUrl" Text="{Binding ServiceUrl}" Width="280" HorizontalAlignment="Center" Margin="0,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Label HorizontalAlignment="Left" Target="{Binding ElementName=TeamName}" Content="_Team name"  />
+                        <TextBox x:Name="TeamName" Text="{Binding TeamName}" Width="280" HorizontalAlignment="Center" Margin="0,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Label HorizontalAlignment="Left" Target="{Binding ElementName=Username}" Content="_Username"  />
+                        <TextBox x:Name="Username" Text="{Binding Username}" Width="280" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                    </StackPanel>
+                    <StackPanel>
+                        <Label HorizontalAlignment="Left" Target="{Binding ElementName=Password}" Content="_Password"  />
+                        <PasswordBox x:Name="Password" controls:PasswordHelper.Attach="True" controls:PasswordHelper.Password="{Binding Password, Mode=TwoWay}" Width="280" HorizontalAlignment="Left" Margin="0,0,0,5" />
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,20" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Button Command="{Binding ExitCommand.Command}" Margin="0,0,15,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Foreground="White" Grid.Column="0" Text="Exit" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,5,0" />
+                                <!--<controls:ProgressRing Grid.Column="1" IsActive="{Binding ExitCommand.IsExecuting}" IsLarge="True" />-->
+                            </Grid>
+                        </Button>
+                        <Button Command="{Binding ConfirmCommand.Command}" Margin="0,0,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Foreground="White" Grid.Column="0" Text="Login" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,5,0" />
+                                <!--<controls:ProgressRing Grid.Column="1" IsActive="{Binding ConfirmCommand.IsExecuting}" IsLarge="True" />-->
+                            </Grid>
+                        </Button>
+                        
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
