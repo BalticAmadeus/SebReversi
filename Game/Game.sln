@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic\GameLogic.csproj", "{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Tests", "Game.Tests\Game.Tests.csproj", "{FB62248C-E540-438F-9F5C-6FCDBFD669D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.DemoClient", "Game.DemoClient\Game.DemoClient.csproj", "{249A9D34-272A-4773-BDD3-E5ED2B44476C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.ClientHandlerNet", "Game.ClientHandlerNet\Game.ClientHandlerNet.csproj", "{02A64DF6-150A-425A-96DE-F2B4FC7838CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{249A9D34-272A-4773-BDD3-E5ED2B44476C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{249A9D34-272A-4773-BDD3-E5ED2B44476C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{249A9D34-272A-4773-BDD3-E5ED2B44476C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02A64DF6-150A-425A-96DE-F2B4FC7838CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A64DF6-150A-425A-96DE-F2B4FC7838CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02A64DF6-150A-425A-96DE-F2B4FC7838CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02A64DF6-150A-425A-96DE-F2B4FC7838CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
