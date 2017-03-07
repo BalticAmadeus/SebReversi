@@ -4,5 +4,5 @@
   "teamPassword": "Secret123#",
   "clientName": "John",
   "clientType": "json",
-  "jsonUri": "http://localhost:60044/GameDemo.svc/json/PerformMove"
+  "jsonUri": "http://localhost:60044/DemoService.svc/json/DemoMove"
 }

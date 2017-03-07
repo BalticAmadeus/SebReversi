@@ -207,7 +207,7 @@ namespace Game.ClientHandlerNet
 
         private PlayerResp JsonPlayerHandler(PlayerReq req)
         {
-            return null;
+            return _webClient.Post<PlayerResp>(_profile.JsonUri, req);
         }
     }
 }
