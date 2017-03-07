@@ -9,6 +9,7 @@ namespace Game.ClientHandlerNet
 
     public class GetPlayerViewResp : BaseResp
     {
+        public string GameUid;
         public int Index;
         public string GameState;
         public int Turn;

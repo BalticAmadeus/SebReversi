@@ -18,6 +18,7 @@ namespace GameLogic
         private int nextGameId;
         private int nextPlayerId;
         private int nextObserverId;
+        private long uidBase;
         private readonly IGameRoleManager _roleManager;
 
         public GameManager(IGameRoleManager roleManager)
@@ -29,6 +30,7 @@ namespace GameLogic
             nextGameId = 1;
             nextPlayerId = 1;
             nextObserverId = 1;
+            uidBase = DateTime.UtcNow.Ticks / 10000000 * 10000000;
             _roleManager = roleManager;
         }
 
@@ -56,7 +58,7 @@ namespace GameLogic
                     if (count >= Settings.MaxGamesPerTeam)
                         throw new ApplicationException("Maximum limit of games per owner team has been reached");
                 }
-                var game = new GameModel(nextGameId++, owner);
+                var game = new GameModel(uidBase, nextGameId++, owner);
                 _games[game.GameId] = game;
                 return new GameInfo(game);
             }

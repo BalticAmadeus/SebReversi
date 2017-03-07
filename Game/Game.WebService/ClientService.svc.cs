@@ -70,6 +70,7 @@ namespace Game.WebService
         private void GetPlayerViewImpl(GetPlayerViewReq req, GetPlayerViewResp resp)
         {
             GameViewInfo gv = Server.GameManager.GetPlayerView(req.PlayerId, req.Auth.GetClientCode(), new PermissionPlayerAccessByClient());
+            resp.GameUid = gv.GameUid.ToString();
             resp.Index = gv.PlayerIndex;
             resp.GameState = gv.GameState.ToString();
             resp.Turn = gv.Turn;

@@ -17,7 +17,7 @@ namespace Game.ClientHandlerNet
 
         public PlayerReq(GetPlayerViewResp view)
         {
-            //GameUid = ???; FIXME
+            GameUid = view.GameUid;
             Turn = view.Turn;
             YourIndex = view.Index;
             Players = view.PlayerStates;
