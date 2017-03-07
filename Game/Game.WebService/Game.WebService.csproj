@@ -62,6 +62,7 @@
   <ItemGroup>
     <Content Include="AdminService.svc" />
     <Content Include="ClientService.svc" />
+    <Content Include="DemoService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -70,11 +71,17 @@
     <Compile Include="AdminService.svc.cs">
       <DependentUpon>AdminService.svc</DependentUpon>
     </Compile>
+    <Compile Include="DemoService.svc.cs">
+      <DependentUpon>DemoService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Demo\GameSolver.cs" />
+    <Compile Include="Demo\PlayerDTO.cs" />
     <Compile Include="IAdminService.cs" />
     <Compile Include="ClientService.svc.cs">
       <DependentUpon>ClientService.svc</DependentUpon>
     </Compile>
     <Compile Include="IClientService.cs" />
+    <Compile Include="IDemoService.cs" />
     <Compile Include="MapConverters\IMapConverter.cs" />
     <Compile Include="MapConverters\ReversiMapConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,7 +122,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60044</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
