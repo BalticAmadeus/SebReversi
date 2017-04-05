@@ -3,6 +3,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace Game.ClientHandlerNet
 {
@@ -10,25 +11,20 @@ namespace Game.ClientHandlerNet
     {
         public TResponse Post<TResponse>(string serviceUrl, object request)
         {
-            var webRequest = (HttpWebRequest)WebRequest.Create(serviceUrl);
-            webRequest.Method = WebRequestMethods.Http.Post;
-
-            var content = new UTF8Encoding().GetBytes(JsonConvert.SerializeObject(request));
-
-            webRequest.ContentLength = content.Length;
-            webRequest.ContentType = "application/json";
-
-            using (var requestStream = webRequest.GetRequestStream())
+            var httpClient = new HttpClient(new HttpClientHandler()
             {
-                requestStream.Write(content, 0, content.Length);
-            }
+                UseProxy = false
+            });
 
-            using (var webResponse = (HttpWebResponse)webRequest.GetResponse())
-            using (var streamReader = new StreamReader(webResponse.GetResponseStream()))
-            {
-                var response = JsonConvert.DeserializeObject<TResponse>(streamReader.ReadToEnd());
-                return response;
-            }
+            var body = JsonConvert.SerializeObject(request, Formatting.None);
+
+            var response = httpClient.PostAsync(serviceUrl, 
+                new StringContent(body, Encoding.UTF8,"application/json")
+                ).Result;
+
+            return JsonConvert.DeserializeObject<TResponse>(
+                    response.Content.ReadAsStringAsync().Result
+                );
         }
     }
 }

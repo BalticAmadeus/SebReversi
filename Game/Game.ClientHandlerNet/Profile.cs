@@ -53,6 +53,11 @@ namespace Game.ClientHandlerNet
                     throw new ApplicationException("jsonUri not specified");
                 //handler = jsonHandler;
             }
+            else if (ClientType == "stdio")
+            {
+                if (string.IsNullOrWhiteSpace(ExecName))
+                    throw new ApplicationException("execName not specified");
+            }
             else
             {
                 throw new ApplicationException($"clientType not supported - {ClientType}");

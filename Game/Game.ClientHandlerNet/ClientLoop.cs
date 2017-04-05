@@ -14,6 +14,7 @@ namespace Game.ClientHandlerNet
         private Profile _profile;
         private JsonWebServiceClient _webClient;
         private PlayerHandlerDelegate _playerHandler;
+        private StdioHandler _stdioHandler;
         private string _sessionLogDir;
         private int _sessionId;
         private int _sequenceNumber;
@@ -39,6 +40,10 @@ namespace Game.ClientHandlerNet
                 case "json":
                     _playerHandler = JsonPlayerHandler;
                     Console.WriteLine("clientType: json " + profile.JsonUri);
+                    break;
+                case "stdio":
+                    _playerHandler = StdioPlayerHandler;
+                    Console.WriteLine("clientType: stdio " + profile.ExecName);
                     break;
                 default:
                     throw new ApplicationException($"clientType not mapped - {profile.ClientType}");
@@ -186,6 +191,16 @@ namespace Game.ClientHandlerNet
             var bytes = encoding.GetBytes(rawData + _profile.TeamPassword);
 
             return BitConverter.ToString(sha1Managed.ComputeHash(bytes)).Replace("-", "").ToLower();
+        }
+
+        private PlayerResp StdioPlayerHandler(PlayerReq req)
+        {
+            if (_stdioHandler == null)
+            {
+                _stdioHandler = new StdioHandler(_profile.ExecName);
+            }
+
+            return _stdioHandler.GetOutput(req);
         }
 
         private PlayerResp ExecPlayerHandler(PlayerReq req)
