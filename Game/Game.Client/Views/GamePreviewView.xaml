@@ -73,9 +73,7 @@
                 </Grid>
             </Button>
 
-            <Image Grid.Column="3" Source="../Assets/pug.png" Margin="10,20,10,0"/>
-
-            <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
 
                 <CheckBox Visibility="{Binding Path=ShowAutoOpen, Converter={StaticResource BooleanToVisibility}}" x:Name="IsAutoOpenEnabled" IsChecked="{Binding IsAutoOpenEnabled, Mode=TwoWay, FallbackValue=True}" VerticalAlignment="Center" Margin="0,12.5,0,0" />
                 <Label Visibility="{Binding Path=ShowAutoOpen, Converter={StaticResource BooleanToVisibility}}" Foreground="White" Target="{Binding ElementName=IsAutoOpenEnabled}" Content="_Auto-Open:" VerticalAlignment="Center" Margin="5,12.5,20,0" />
@@ -205,12 +203,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="34" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <!--<RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />-->
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" Background="#58c50f">
@@ -327,26 +320,31 @@
                     <StackPanel Background="White" Grid.Row="5">
                         <Grid Background="White">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                <ColumnDefinition Width="140"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="140"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                            <StackPanel Grid.Column="0">
-                                <Label Grid.Row="6" Grid.Column="0" Content="_Map Resets:" Target="{Binding ElementName=MapResetCount}" HorizontalAlignment="Left" Margin="20,10,0,5" />
-                                <Label Grid.Row="7" Grid.Column="0" Content="_Turn Queue Size:" Target="{Binding ElementName=TurnQueueSize}" HorizontalAlignment="Left" Margin="20,5,0,5" />
-                                <Label Grid.Row="8" Grid.Column="0" Content="_Request Count:" Target="{Binding ElementName=RequestCount}" HorizontalAlignment="Left" Margin="20,5,0,5" />
-                                <Label Grid.Row="9" Grid.Column="0" Content="_LastCallTime:" Target="{Binding ElementName=LastCallTime}" HorizontalAlignment="Left" Margin="20,5,0,5" />
-                            </StackPanel>
-                            <StackPanel Grid.Column="1">
-                                <TextBlock x:Name="MapResetCount" Text="{Binding MapResetCount, FallbackValue=0}" Margin="0,10,0,5" />
-                                <TextBlock x:Name="TurnQueueSize" Text="{Binding TurnQueueSize, FallbackValue=0}" Margin="0,5,0,5" />
-                                <TextBlock x:Name="RequestCount" Text="{Binding RequestCount, FallbackValue=0}" Margin="0,5,0,5" />
-                                <TextBlock x:Name="LastCallTime" Text="{Binding LastCallTime, FallbackValue=0}" Margin="0,5,0,5" />
-                            </StackPanel>
+                            <Label Grid.Column="0" Grid.Row="0" Content="_Map Resets:" Target="{Binding ElementName=MapResetCount}" HorizontalAlignment="Left" Margin="20,10,0,5" />
+                            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="MapResetCount" Text="{Binding MapResetCount, FallbackValue=0}" Margin="0,10,0,5" />
+                            <Label Grid.Column="0" Grid.Row="1" Content="_Turn Queue Size:" Target="{Binding ElementName=TurnQueueSize}" HorizontalAlignment="Left" Margin="20,5,0,5" />
+                            <TextBlock Grid.Column="1" Grid.Row="1" x:Name="TurnQueueSize" Text="{Binding TurnQueueSize, FallbackValue=0}" Margin="0,5,0,5" />
+                            <Label Grid.Row="0" Grid.Column="2" Content="_Request Count:" Target="{Binding ElementName=RequestCount}" HorizontalAlignment="Left" Margin="20,5,0,5" />
+                            <TextBlock Grid.Row="0" Grid.Column="3" x:Name="RequestCount" Text="{Binding RequestCount, FallbackValue=0}" Margin="0,5,0,5" />
+                            <Label Grid.Row="1" Grid.Column="2" Content="_LastCallTime:" Target="{Binding ElementName=LastCallTime}" HorizontalAlignment="Left" Margin="20,5,0,5" />
+                            <TextBlock Grid.Row="1" Grid.Column="3" x:Name="LastCallTime" Text="{Binding LastCallTime, FallbackValue=0}" Margin="0,5,0,5" />
                         </Grid>
                     </StackPanel>
 
-                    <Image Grid.Row="6" Source="../Assets/poweredby.png" />
+                    <StackPanel Grid.Row="6">
+                        <Image Source="../Assets/pug.png" Margin="10,0,10,20"/>
+                        <Image Source="../Assets/poweredby.png" />
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>

@@ -46,11 +46,11 @@
                 <ColumnDefinition Width="400"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Background="#58c50f">
+            <Grid Grid.Row="0">
                 <StackPanel VerticalAlignment="Center">
-                    <Image Source="../Assets/pug.png"/>
+                    <Image Source="../Assets/pug.png" Margin="10,0,10,0"/>
 
-                    <Label Margin="0,15,0,0" HorizontalAlignment="Center" Style="{StaticResource LabelWhite}"  Content="_US PUG CHALLENGE: PROGRAMMER'S CHALLENGE"></Label>
+                    <Label Margin="0,15,0,0" HorizontalAlignment="Center" Style="{StaticResource LabelWhite}"  Content="_PROGRAMMER'S CHALLENGE" Foreground="#58c50f" FontWeight="Bold"></Label>
                 </StackPanel>
                 
             </Grid>
