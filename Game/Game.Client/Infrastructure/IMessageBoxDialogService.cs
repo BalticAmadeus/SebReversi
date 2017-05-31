@@ -1,7 +1,11 @@
-﻿namespace Game.AdminClient.Infrastructure
+﻿using System;
+using System.Windows;
+
+namespace Game.AdminClient.Infrastructure
 {
     public interface IMessageBoxDialogService
     {
-        bool OpenDialog(string message, string title = null);
+        bool OpenDialog(string message, string title = null, MessageBoxButton button = MessageBoxButton.OK);
+        bool ShowException(Exception e);
     }
 }

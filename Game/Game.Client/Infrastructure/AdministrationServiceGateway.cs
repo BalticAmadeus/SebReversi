@@ -93,8 +93,7 @@ namespace Game.AdminClient.Infrastructure
                     LastCallTime = _stopwatch.ElapsedMilliseconds;
                     _stopwatch.Reset();
 
-                    if (initLoginResp.Status != "OK")
-                        throw new Exception(initLoginResp.Message);
+                    ServerMessageException.ThrowOnError(initLoginResp);
 
                     var completeReq = new CompleteLoginReq
                     {
@@ -124,8 +123,7 @@ namespace Game.AdminClient.Infrastructure
                     LastCallTime = _stopwatch.ElapsedMilliseconds;
                     _stopwatch.Reset();
 
-                    if (completeLoginResp.Status != "OK")
-                        throw new Exception(completeLoginResp.Message);
+                    ServerMessageException.ThrowOnError(completeLoginResp);
 
                     _sessionId = completeLoginResp.SessionId;
 
@@ -152,8 +150,7 @@ namespace Game.AdminClient.Infrastructure
                     LastCallTime = _stopwatch.ElapsedMilliseconds;
                     _stopwatch.Reset();
 
-                    if (resp.Status != "OK")
-                        throw new Exception(resp.Message);
+                    ServerMessageException.ThrowOnError(resp);
 
                     _observerId = resp.ObserverId;
 

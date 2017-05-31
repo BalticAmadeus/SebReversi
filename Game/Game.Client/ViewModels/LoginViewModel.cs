@@ -65,9 +65,23 @@ namespace Game.AdminClient.ViewModels
                 {
                     try
                     {
-                        Validation.NotNullOrWhitespace(ServiceUrl);
-                        Validation.NotNullOrWhitespace(Username);
-                        Validation.NotNullOrWhitespace(TeamName);
+#if DEBUG
+                        if (string.IsNullOrEmpty(ServiceUrl))
+                        {
+                            ServiceUrl = "http://localhost:60044/AdminService.svc";
+                            TeamName = "Admin";
+                            Username = "Admin";
+                            Password = "GangnamStyle";
+                        }
+#endif
+                        Validation.NotNullOrWhitespace(ServiceUrl, "Service url");
+                        Validation.NotNullOrWhitespace(TeamName, "Team name");
+                        Validation.NotNullOrWhitespace(Username, "Username");
+
+                        if (!ServiceUrl.ToLower().EndsWith(".svc"))
+                        {
+                            ServiceUrl = ServiceUrl.TrimEnd('/') + "/AdminService.svc";
+                        }
 
                         _administrationServiceGateway.ConnectionData = new ConnectionData
                         {
@@ -83,13 +97,9 @@ namespace Game.AdminClient.ViewModels
 
                         _regionManager.RequestNavigate("MainRegion", new Uri("LobbyView", UriKind.Relative));
                     }
-                    catch (ArgumentException e)
-                    {
-                        _messageBoxDialogService.OpenDialog(e.Message, e.ParamName);
-                    }
                     catch (Exception e)
                     {
-                        _messageBoxDialogService.OpenDialog(e.Message, "");
+                        _messageBoxDialogService.ShowException(e);
                     }
                 }));
             }
@@ -109,16 +119,23 @@ namespace Game.AdminClient.ViewModels
 
     public static class Validation
     {
-        public static void NotNullOrWhitespace(string input)
+        public static void NotNullOrWhitespace(string input, string label)
         {
             if (string.IsNullOrWhiteSpace(input))
-                throw new ArgumentException("");
+                ThrowException($"Please enter {label}");
         }
 
-        public static void NotNull(string input)
+        private static void ThrowException(string message)
         {
-            if (input == null)
-                throw new ArgumentException("");
+            throw new ValidationException(message);
+        }
+    }
+
+    public class ValidationException : ApplicationException
+    {
+        public ValidationException(string message) : base(message)
+        {
+            // nothing more
         }
     }
 }

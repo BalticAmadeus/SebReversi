@@ -138,6 +138,7 @@
     <Compile Include="Converters\CellStateConverter.cs" />
     <Compile Include="Converters\NullableToStatusConverter.cs" />
     <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
+    <Compile Include="Infrastructure\ServerMessageException.cs" />
     <Compile Include="Infrastructure\UserSettings.cs" />
     <Compile Include="Infrastructure\ConfirmationDialogService.cs" />
     <Compile Include="Infrastructure\FileDialogService.cs" />
