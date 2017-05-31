@@ -162,3 +162,5 @@ DataFiles/8x8_center - Copy.txt
 /Game/Game.CrossPlatform/Game.CrossPlatform.UWP/project.lock.json
 /Game/packages/Xamarin.Forms.2.0.0.6482/lib/wpa81
 /Game/packages/Microsoft.Bcl.Build.1.0.14/tools
+Game/Game.WebService/Settings
+Game/Game.WebService/Protocols
