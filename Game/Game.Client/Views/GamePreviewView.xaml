@@ -1,13 +1,13 @@
 ﻿<UserControl x:Class="Game.AdminClient.Views.GamePreviewView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:Game.AdminClient.Converters"
              xmlns:viewModels="clr-namespace:Game.AdminClient.ViewModels"
              xmlns:controls="clr-namespace:Game.AdminClient.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1280"
              Loaded="GamePreviewViewLoaded" Background="#373737">
     <UserControl.Resources>
@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button Width="120" Grid.Column="0" Command="{Binding CloseCommand.Command}" Margin="20,20,0,0" >
+            <Button Width="120" Grid.Column="0" Command="{Binding CloseCommand.Command}" Margin="20,20,0,0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -73,13 +73,15 @@
                 </Grid>
             </Button>
 
-            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Image Grid.Column="3" Source="../Assets/pug.png" Margin="10,20,10,0"/>
+
+            <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right">
 
                 <CheckBox Visibility="{Binding Path=ShowAutoOpen, Converter={StaticResource BooleanToVisibility}}" x:Name="IsAutoOpenEnabled" IsChecked="{Binding IsAutoOpenEnabled, Mode=TwoWay, FallbackValue=True}" VerticalAlignment="Center" Margin="0,12.5,0,0" />
-                <Label Visibility="{Binding Path=ShowAutoOpen, Converter={StaticResource BooleanToVisibility}}" Foreground="White" Target="{Binding ElementName=IsAutoOpenEnabled}" Content="_Auto-Open:" VerticalAlignment="Center" Margin="5,12.5,20,0"/>
+                <Label Visibility="{Binding Path=ShowAutoOpen, Converter={StaticResource BooleanToVisibility}}" Foreground="White" Target="{Binding ElementName=IsAutoOpenEnabled}" Content="_Auto-Open:" VerticalAlignment="Center" Margin="5,12.5,20,0" />
 
                 <CheckBox x:Name="IsAutoRefreshEnabled" IsChecked="{Binding AutoRefreshOperation.IsAutoRefreshEnabled, Mode=TwoWay, FallbackValue=True}" VerticalAlignment="Center" Margin="0,12.5,0,0" />
-                <Label Foreground="White" Target="{Binding ElementName=IsAutoRefreshEnabled}" Content="_Auto-Refresh:" VerticalAlignment="Center" Margin="5,12.5,20,0"/>
+                <Label Foreground="White" Target="{Binding ElementName=IsAutoRefreshEnabled}" Content="_Auto-Refresh:" VerticalAlignment="Center" Margin="5,12.5,20,0" />
 
                 <Button Command="{Binding DropPlayerCommand.Command}" Margin="0,12.5,0,0" Visibility="{Binding Path=ShowDropPlayer, Converter={StaticResource BooleanToVisibility}}">
                     <Grid>
@@ -92,7 +94,7 @@
                         <!--<controls:ProgressRing Grid.Column="1" IsActive="{Binding DropPlayerCommand.IsExecuting}" IsLarge="True" />-->
                     </Grid>
                 </Button>
-                <Button Command="{Binding ShowInfoCommand.Command}" Margin="20,12.5,20,0"  >
+                <Button Command="{Binding ShowInfoCommand.Command}" Margin="20,12.5,20,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -103,7 +105,6 @@
                         <!--<controls:ProgressRing Grid.Column="1" IsActive="{Binding ShowInfoCommand.IsExecuting}" IsLarge="True" />-->
                     </Grid>
                 </Button>
-
             </StackPanel>
         </Grid>
 
@@ -115,17 +116,17 @@
             </Grid.ColumnDefinitions>
 
             <Border BorderThickness="0" Margin="20,10,0,20" BorderBrush="LightGray" Background="#4b4b4b">
-                <xctk:Zoombox HorizontalAlignment="Center" x:Name="Zoombox" BorderThickness="0" >
-                    <ListBox HorizontalAlignment="Center" BorderThickness="0" ScrollViewer.CanContentScroll="False" 
-                             ItemsSource="{Binding CellCollection}" 
+                <xctk:Zoombox HorizontalAlignment="Center" x:Name="Zoombox" BorderThickness="0">
+                    <ListBox HorizontalAlignment="Center" BorderThickness="0" ScrollViewer.CanContentScroll="False"
+                             ItemsSource="{Binding CellCollection}"
                              Background="Transparent"
                              IsHitTestVisible="False"
-                             Width="{Binding CanvasWidth}" 
+                             Width="{Binding CanvasWidth}"
                              Height="{Binding CanvasHeight}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <Canvas VerticalAlignment="Stretch" 
-                                        HorizontalAlignment="Stretch" 
+                                <Canvas VerticalAlignment="Stretch"
+                                        HorizontalAlignment="Stretch"
                                         IsItemsHost="True">
                                 </Canvas>
                             </ItemsPanelTemplate>
@@ -144,8 +145,8 @@
                         </ListBox.ItemContainerStyle>
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="{x:Type viewModels:CellViewModel}">
-                                <Border Width="{Binding CellSize}" 
-                                        Height="{Binding CellSize}" 
+                                <Border Width="{Binding CellSize}"
+                                        Height="{Binding CellSize}"
                                         Background="{Binding Model, Converter={StaticResource MapStateConverter}}"
                                         BorderThickness="0.3"
                                         BorderBrush="#959595"
@@ -155,30 +156,28 @@
                                         <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Height="18" Width="18">
                                             <Ellipse.Fill>
                                                 <LinearGradientBrush EndPoint="0.504,1.5" StartPoint="0.504,0.03">
-                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateOuterTopConverter}}" Offset="0"/>
-                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateOuterBottomConverter}}" Offset="0.567"/>
+                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateOuterTopConverter}}" Offset="0" />
+                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateOuterBottomConverter}}" Offset="0.567" />
                                                 </LinearGradientBrush>
                                             </Ellipse.Fill>
                                         </Ellipse>
                                         <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Height="12" Width="12">
                                             <Ellipse.Fill>
                                                 <LinearGradientBrush EndPoint="0.504,1.5" StartPoint="0.504,0.03">
-                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateInnerTopConverter}}" Offset="0"/>
-                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateInnerBottomConverter}}" Offset="0.567"/>
+                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateInnerTopConverter}}" Offset="0" />
+                                                    <GradientStop Color="{Binding Model, Converter={StaticResource CellStateInnerBottomConverter}}" Offset="0.567" />
                                                 </LinearGradientBrush>
                                             </Ellipse.Fill>
                                         </Ellipse>
                                     </Grid>
                                 </Border>
-
-
                             </DataTemplate>
                         </ListBox.ItemTemplate>
 
                         <xctk:MagnifierManager.Magnifier>
                             <xctk:Magnifier BorderBrush="#888888"
                                   BorderThickness="0"
-                                  Radius="140" 
+                                  Radius="140"
                                   ZoomFactor=".25" />
                         </xctk:MagnifierManager.Magnifier>
                     </ListBox>
@@ -189,7 +188,7 @@
                 </xctk:Zoombox>
             </Border>
 
-            <Grid Grid.Column="2" Margin="20,10,20,20">
+            <Grid Grid.Column="2" Margin="20,10,20,20" Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <!--<RowDefinition Height="Auto" />-->
@@ -206,6 +205,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="34" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                         <!--<RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -216,7 +216,7 @@
                     <Grid Grid.Row="0" Background="#58c50f">
                         <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White">Running Game</TextBlock>
                     </Grid>
-                   
+
                     <StackPanel Background="White" Grid.Row="1">
 
                         <Grid>
@@ -232,11 +232,9 @@
                             <StackPanel Grid.Column="1">
                                 <TextBlock x:Name="GameLabel" Grid.Row="0" Grid.Column="1" Text="{Binding Game.Label, FallbackValue=Title}" Margin="0,10,0,5" />
                                 <TextBlock x:Name="TurnNumber" Grid.Row="1" Grid.Column="1" Text="{Binding TurnNumber, FallbackValue=0}" Margin="0,5,0,5" />
-                                <TextBlock x:Name="GamePlayers" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Game.PlayerCollection.Count, Mode=OneWay, FallbackValue=0}" Margin="0,5,0,10"/>
+                                <TextBlock x:Name="GamePlayers" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Game.PlayerCollection.Count, Mode=OneWay, FallbackValue=0}" Margin="0,5,0,10" />
                             </StackPanel>
                         </Grid>
-
-                        
                     </StackPanel>
 
                     <Grid Grid.Row="3" Grid.Column="0" Margin="0,0,0,0">
@@ -268,10 +266,9 @@
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Ellipse Height="12" Width="12" Fill="#be0e0e" Opacity="0.7" Visibility="{Binding Path=SlowTurn, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"></Ellipse>
-                                                    <TextBlock Text="{Binding Path=Player.Name}" Margin="5,0,5,0"/>
+                                                    <TextBlock Text="{Binding Path=Player.Name}" Margin="5,0,5,0" />
                                                 </StackPanel>
                                             </DataTemplate>
-
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Width="{Binding ActualWidth, ElementName=Column5}">
@@ -296,7 +293,7 @@
                                         </GridViewColumn.HeaderTemplate>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Path=Condition}" Margin="20,0,5,0"/>
+                                                <TextBlock Text="{Binding Path=Condition}" Margin="20,0,5,0" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -309,7 +306,7 @@
                                         </GridViewColumn.HeaderTemplate>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Path=Score}" Margin="20,0,5,0"/>
+                                                <TextBlock Text="{Binding Path=Score}" Margin="20,0,5,0" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -335,11 +332,10 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="0">
-                                <Label Grid.Row="6" Grid.Column="0" Content="_Map Resets:" Target="{Binding ElementName=MapResetCount}" HorizontalAlignment="Left" Margin="20,10,0,5"/>
-                                <Label Grid.Row="7" Grid.Column="0" Content="_Turn Queue Size:" Target="{Binding ElementName=TurnQueueSize}" HorizontalAlignment="Left" Margin="20,5,0,5"/>
-                                <Label Grid.Row="8" Grid.Column="0" Content="_Request Count:" Target="{Binding ElementName=RequestCount}" HorizontalAlignment="Left" Margin="20,5,0,5"/>
-                                <Label Grid.Row="9" Grid.Column="0" Content="_LastCallTime:" Target="{Binding ElementName=LastCallTime}" HorizontalAlignment="Left" Margin="20,5,0,5"/>
-
+                                <Label Grid.Row="6" Grid.Column="0" Content="_Map Resets:" Target="{Binding ElementName=MapResetCount}" HorizontalAlignment="Left" Margin="20,10,0,5" />
+                                <Label Grid.Row="7" Grid.Column="0" Content="_Turn Queue Size:" Target="{Binding ElementName=TurnQueueSize}" HorizontalAlignment="Left" Margin="20,5,0,5" />
+                                <Label Grid.Row="8" Grid.Column="0" Content="_Request Count:" Target="{Binding ElementName=RequestCount}" HorizontalAlignment="Left" Margin="20,5,0,5" />
+                                <Label Grid.Row="9" Grid.Column="0" Content="_LastCallTime:" Target="{Binding ElementName=LastCallTime}" HorizontalAlignment="Left" Margin="20,5,0,5" />
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <TextBlock x:Name="MapResetCount" Text="{Binding MapResetCount, FallbackValue=0}" Margin="0,10,0,5" />
@@ -349,15 +345,14 @@
                             </StackPanel>
                         </Grid>
                     </StackPanel>
-                    
 
-                    </Grid>
-                    
+                    <Image Grid.Row="6" Source="../Assets/poweredby.png" />
                 </Grid>
             </Grid>
         </Grid>
+    </Grid>
 
-        <!--<Grid Grid.Row="2" >
+    <!--<Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />

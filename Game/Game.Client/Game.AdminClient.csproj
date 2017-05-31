@@ -56,7 +56,7 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -336,15 +336,6 @@
     <Resource Include="Fonts\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\ba_logo.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\logo_seb.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\GameLogic\GameLogic.csproj">
       <Project>{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}</Project>
       <Name>GameLogic</Name>
@@ -370,6 +361,18 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\pug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\poweredby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
