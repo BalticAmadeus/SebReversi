@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Web.Hosting;
 
 namespace GameLogic
 {
@@ -26,8 +27,16 @@ namespace GameLogic
 
         internal static void Load()
         {
-            _gameProtocolDir = ConfigurationManager.AppSettings["Game.GameProtocolDir"] ?? _gameProtocolDir;
-            _teamRegistryFile = ConfigurationManager.AppSettings["Game.TeamRegistryFile"] ?? _teamRegistryFile;
+            _gameProtocolDir = ResolvePath(ConfigurationManager.AppSettings["Game.GameProtocolDir"] ?? _gameProtocolDir);
+            _teamRegistryFile = ResolvePath(ConfigurationManager.AppSettings["Game.TeamRegistryFile"] ?? _teamRegistryFile);
+        }
+
+        private static string ResolvePath(string path)
+        {
+            if (path.StartsWith("@"))
+                return HostingEnvironment.MapPath(path.Substring(1));
+            else
+                return path;
         }
     }
 }
