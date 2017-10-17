@@ -206,7 +206,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Background="#58c50f">
+                    <Grid Grid.Row="0" Background="{StaticResource BaBackgroundBrush}">
                         <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White">Running Game</TextBlock>
                     </Grid>
 
@@ -313,7 +313,7 @@
                         </ListView>
                     </Grid>
 
-                    <Grid Grid.Row="4" Background="#58c50f">
+                    <Grid Grid.Row="4" Background="{StaticResource BaBackgroundBrush}">
                         <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White">Other info</TextBlock>
                     </Grid>
 
@@ -342,8 +342,8 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="6">
-                        <Image Source="../Assets/pug.png" Margin="10,0,10,20"/>
-                        <Image Source="../Assets/poweredby.png" />
+                        <Image Source="../Assets/emea.png" Margin="10,0,10,20"/>
+                        <Image Source="../Assets/poweredby.png" Margin="13,10,10,0"/>
                     </StackPanel>
                 </Grid>
             </Grid>

@@ -189,7 +189,7 @@
                                     <RowDefinition Height="34"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" Background="#58c50f">
+                                <Grid Grid.Row="0" Background="{StaticResource BaBackgroundBrush}">
                                     <Label Margin="20,0,0,0" HorizontalAlignment="Left" Foreground="White" Content="_Selected Game"></Label>
                                 </Grid>
                                 <Grid Grid.Row="1" Background="White">

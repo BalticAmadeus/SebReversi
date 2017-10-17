@@ -240,7 +240,7 @@
 
             <Button Width="40" BorderThickness="0" Background="Transparent" Grid.Row="0" Style="{StaticResource ElipseButton}" Command="{Binding SwapPlayersCommand.Command}" Margin="0,0,0,0" >
                 <Grid>
-                    <Ellipse Fill="#58c50f" Width="34" Height="34"></Ellipse>
+                    <Ellipse Fill="{StaticResource BaBackgroundBrush}" Width="34" Height="34"></Ellipse>
                     <Canvas Width="16.011" Height="13.672" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
                         <Canvas>
                             <!-- Layer 1/Rounded Rectangle 2 copy -->
@@ -252,7 +252,7 @@
 
             <Button Width="40" BorderThickness="0" Grid.Row="1" Background="Transparent" Style="{StaticResource ElipseButton}" Command="{Binding AddPlayerCommand.Command}" Margin="0,10,0,10" >
                 <Grid>
-                    <Ellipse Fill="#58c50f" Width="34" Height="34"></Ellipse>
+                    <Ellipse Fill="{StaticResource BaBackgroundBrush}" Width="34" Height="34"></Ellipse>
                     <av:Canvas Width="14.065" Height="12.010" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
                         <av:Canvas>
                             <!-- Layer 1/Rounded Rectangle 1 copy 5 -->
@@ -272,7 +272,7 @@
                     <controls:ProgressRing Grid.Column="0" IsActive="{Binding RemovePlayerCommand.IsExecuting}" IsLarge="True"  />
                 </Grid>-->
                 <Grid>
-                    <Ellipse Fill="#58c50f" Width="34" Height="34"></Ellipse>
+                    <Ellipse Fill="{StaticResource BaBackgroundBrush}" Width="34" Height="34"></Ellipse>
                     <av:Canvas Width="13.843" Height="12.010" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
                         <av:Canvas>
 

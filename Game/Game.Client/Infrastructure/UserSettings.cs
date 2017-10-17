@@ -5,7 +5,7 @@ namespace Game.AdminClient.Infrastructure
 {
     public static class UserSettings
     {
-        private const string TitleTemplate = "US PUG Challenge - v{0}";
+        private const string TitleTemplate = "EMEA PUG Challenge 2017 - v{0}";
 
         public static TeamRole Role { get; set; }
 

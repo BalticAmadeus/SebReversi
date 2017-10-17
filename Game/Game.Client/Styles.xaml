@@ -6,8 +6,9 @@
     <FontFamily x:Key="OpenSans">/Fonts/#Open Sans</FontFamily>
     <FontFamily x:Key="SegoeSymbol">Segoe UI Symbol</FontFamily>
 
-    <!--<ImageBrush x:Key="BaBackgroundBrush" ImageSource="Assets\background.png" Stretch="UniformToFill" />-->
-    <SolidColorBrush x:Key="BaBackgroundBrush" Color="#58c50f" Opacity="1"></SolidColorBrush>
+    <SolidColorBrush x:Key="BaBackgroundBrush" Color="#5795d2" Opacity="1"></SolidColorBrush>
+    <SolidColorBrush x:Key="BaBackgroundBrushDark" Color="#345694" Opacity="1"></SolidColorBrush>
+    <Color x:Key="ButtonDefaultDisabledBackgroundColor">#345694</Color>
 
     <Color x:Key="TextBlockDefaultForegroundColor" >#FF333333</Color>
     <SolidColorBrush x:Key="TextBlockDefaultForegroundBrush" Color="{StaticResource TextBlockDefaultForegroundColor}" />
@@ -49,7 +50,6 @@
     <Color x:Key="ButtonDefaultBorderColor" >#FFADADAD</Color>
     <Color x:Key="ButtonDefaultForegroundColor" >#FF333333</Color>
     <Color x:Key="ButtonDefaultBackgroundColor" >#FFFFFFFF</Color>
-    <Color x:Key="ButtonDefaultDisabledBackgroundColor" >#357709</Color>
     <Color x:Key="ButtonDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
     <Color x:Key="ButtonDefaultPressedBackgroundColor" >#FFCBCBCB</Color>
 
@@ -62,7 +62,7 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Padding" Value="10,6,10,6" />
-        <Setter Property="Background" Value="#58c50f" />
+        <Setter Property="Background" Value="{StaticResource BaBackgroundBrush}" />
         <Setter Property="Foreground" Value="white" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{StaticResource ButtonDefaultBorderBrush}" />
@@ -678,10 +678,10 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Padding" Value="10,0,10,0" />
-        <Setter Property="Background" Value="#58c50f" />
+        <Setter Property="Background" Value="{StaticResource BaBackgroundBrush}" />
         <Setter Property="Foreground" Value="{StaticResource CheckBoxDefaultForegroundBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="#58c50f" />
+        <Setter Property="BorderBrush" Value="{StaticResource BaBackgroundBrushDark}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
@@ -1356,9 +1356,9 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="BorderThickness" Value="1,0,0,0" />
         <Setter Property="MinHeight" Value="34" />
-        <Setter Property="BorderBrush" Value="#357709" />
+        <Setter Property="BorderBrush" Value="{StaticResource BaBackgroundBrushDark}" />
         <Setter Property="Foreground" Value="{StaticResource GridViewColumnHeaderDefaultForegroundBrush}" />
-        <Setter Property="Background" Value="#58c50f" />
+        <Setter Property="Background" Value="{StaticResource BaBackgroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GridViewColumnHeader">
@@ -1380,7 +1380,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="HeaderBorder" 
                                 BorderThickness="0,0,1,0" 
-                                BorderBrush="#357709"
+                                BorderBrush="{StaticResource BaBackgroundBrushDark}"
                                 Background="{TemplateBinding Background}"
                                 Padding="{TemplateBinding Padding}">
 

@@ -370,10 +370,10 @@
     <Resource Include="Assets\poweredby.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Icon.ico" />
+    <Resource Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icon.ico" />
+    <Resource Include="Assets\emea.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
